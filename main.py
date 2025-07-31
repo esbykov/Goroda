@@ -8,7 +8,7 @@ def get_coordinates(city, key):
         if results:
             lat = round(results[0]['geometry']['lat'], 2)
             lng = round(results[0]['geometry']['lng'], 2)
-            return lat, lng
+            return f"Широта: {lat}, Долгота: {lng}"
         else:
             return "Город не найден"
     except Exception as e:
@@ -16,7 +16,7 @@ def get_coordinates(city, key):
 
 
 key = '63e5eb15415b4679a88d546ae3e03d01'
-city = "London"
+city = "Эквадор"
 coordinates = get_coordinates(city, key)
 print(f"Координаты города {city}: {coordinates}")
 
