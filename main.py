@@ -10,8 +10,14 @@ def get_coordinates(city, key):
             lat = round(results[0]['geometry']['lat'], 2)
             lng = round(results[0]['geometry']['lng'], 2)
             country = results[0]['components']['country']
-            region = results[0]['components']['state']
-            return f"Широта: {lat}, Долгота: {lng}\n Страна: {country}, Регион: {region}"
+
+            if 'state' in results[0]['components']:
+                region = results[0]['components']['state']
+                return f"Широта: {lat}, Долгота: {lng}\n Страна: {country}\n Регион: {region}"
+            else:
+                return f"Широта: {lat}, Долгота: {lng}\n Страна: {country}"
+
+
         else:
             return "Город не найден"
     except Exception as e:
@@ -24,13 +30,10 @@ def show_coordinates(event=None):
     label.config(text=f"Координаты города {city}:\n {coordinates}")
 
 key = '63e5eb15415b4679a88d546ae3e03d01'
-city = "Москва"
-coordinates = get_coordinates(city, key)
-print(f"Координаты города {city}:\n {coordinates}")
 
 window = Tk()
 window.title("Поиск координат города")
-window.geometry("320x100")
+window.geometry("320x130")
 
 entry = Entry()
 entry.pack()
