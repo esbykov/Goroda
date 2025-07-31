@@ -12,6 +12,7 @@ def get_coordinates(city, key):
     except Exception as e:
         return f"Общая ошибка: {e}"
 
+
 key = '63e5eb15415b4679a88d546ae3e03d01'
 city = "London"
 coordinates = get_coordinates(city, key)
