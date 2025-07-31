@@ -11,7 +11,7 @@ def get_coordinates(city, key):
             lat = round(results[0]['geometry']['lat'], 2)
             lng = round(results[0]['geometry']['lng'], 2)
             country = results[0]['components']['country']
-            osm_url = f"https://www.openstreetmap.org/?mlat={lat}&mlon{lng}"
+            osm_url = f"https://www.openstreetmap.org/?mlat={lat}&mlon={lng}"
 
             if 'state' in results[0]['components']:
                 region = results[0]['components']['state']
