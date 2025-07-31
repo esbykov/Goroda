@@ -9,7 +9,9 @@ def get_coordinates(city, key):
         if results:
             lat = round(results[0]['geometry']['lat'], 2)
             lng = round(results[0]['geometry']['lng'], 2)
-            return f"Широта: {lat}, Долгота: {lng}"
+            country = results[0]['components']['country']
+            region = results[0]['components']['state']
+            return f"Широта: {lat}, Долгота: {lng}\n Страна: {country}, Регион: {region}"
         else:
             return "Город не найден"
     except Exception as e:
@@ -22,7 +24,7 @@ def show_coordinates(event=None):
     label.config(text=f"Координаты города {city}:\n {coordinates}")
 
 key = '63e5eb15415b4679a88d546ae3e03d01'
-city = "Эквадор"
+city = "Москва"
 coordinates = get_coordinates(city, key)
 print(f"Координаты города {city}:\n {coordinates}")
 
